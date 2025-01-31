@@ -5,7 +5,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-image: url('patterns-trans.png'); /* Укажите путь к вашей PNG-картинке */
+    background-image: url('image/patterns-trans.png'); /* Укажите путь к вашей PNG-картинке */
     background-repeat: repeat; /* Картинка будет повторяться по обеим осям */
     background-size: auto; /* Автоматический размер для оригинального соотношения сторон */
     height: 100vh; /* Высота body равна высоте окна просмотра */

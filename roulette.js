@@ -1,9 +1,9 @@
 const items = [
-    "star.png",
-    "flower.png",
-    "coin.png",
-    "mshroom.png",
-    "chomp.png",
+    "image/star.png",
+    "image/flower.png",
+    "image/coin.png",
+    "image/mshroom.png",
+    "image/chomp.png",
 ];
 
 const probabilities = [
