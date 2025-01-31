@@ -75,3 +75,43 @@ body {
 #roulette-start:active {
   transform: scale(0.98);
 }
+
+@media (max-width: 600px) {
+    body {
+       overflow: hidden;
+    }
+    #wrapper {
+	width: 128px;
+        /* rotate: 90deg; */
+    }
+
+    #roulette {
+        height: calc(128px * 5); /* Высота для всех элементов рулетки */
+        overflow: hidden; /* Скрываем лишние элементы */
+        white-space: nowrap; /* Элементы располагаются в одну линию */
+	width: 128px;
+    }
+
+    #roulette .roulette-item {
+        display: block; /* Каждый элемент занимает всю ширину */
+        width: 100%; /* Ширина элемента на всю ширину контейнера */
+        height: 128px; /* Фиксированн ая высота для каждого элемента */
+    }
+
+    #roulette .roulette-item img {
+	width: auto;
+        height: 100%; /* Высота изображения на всю высоту элемента */
+        display: block; /* Убираем пробелы под изображением */
+    }
+
+    #roulette::after {
+    position: absolute;
+    left: 50%; /* Центрируем по горизонтали */
+    top: 50%; /* Центрируем по вертикали */
+    transform: translate(-50%, -50%); /* Сдвигаем на половину ширины и высоты для точного центрирования */
+    width: 128px; /* Ширина псевдоэлемента */
+    height: 128px; /* Высота псевдоэлемента */
+    border: 3px solid #000;
+    content: ' '; /* Псевдоэлемент должен иметь контент */
+}
+}
