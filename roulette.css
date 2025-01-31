@@ -1,0 +1,117 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('image/patterns-trans.png'); /* Укажите путь к вашей PNG-картинке */
+    background-repeat: repeat; /* Картинка будет повторяться по обеим осям */
+    background-size: auto; /* Автоматический размер для оригинального соотношения сторон */
+    height: 100vh; /* Высота body равна высоте окна просмотра */
+    margin: 0; /* Убираем отступы */
+}
+
+#wrapper {
+    display: block;
+    width: calc(129px * 5);
+    margin: 20px auto 0;
+     background-color: white; /* Белый фон для контейнера */
+     border-radius: 8px; /* Загругление углов */
+    padding: 60px; /* Отступы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+#roulette {
+    border: 3px solid #000;
+    overflow: hidden;
+    height: 128px;
+    white-space: nowrap;
+    position: relative;
+}
+#roulette::after {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 128px;
+	height: 128px;
+	border: 3px solid #000;
+	content: ' ';
+	top: -3px;
+}
+#roulette .roulette-item {
+    width: 128px;
+    height: 128px;
+    display: inline-block;
+}
+#roulette .roulette-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+}
+#roulette-buttons {
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+#roulette-start {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 10px;
+    font-family: 'Arial Black', sans-serif; /* Винтажный шрифт */
+    cursor: pointer;
+    font-size: 16px; /* Размер шрифта */
+    font-weight: normal; /* Нормальное начертание шрифта */
+    letter-spacing: 1px; /* Расстояние между буквами */
+    transition: background-color 0.3s ease;
+}
+
+#roulette-start:hover {
+    background-color: #45a049;
+}
+
+#roulette-start:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+    body {
+       overflow: hidden;
+    }
+    #wrapper {
+	width: 128px;
+        /* rotate: 90deg; */
+    }
+
+    #roulette {
+        height: calc(128px * 5); /* Высота для всех элементов рулетки */
+        overflow: hidden; /* Скрываем лишние элементы */
+        white-space: nowrap; /* Элементы располагаются в одну линию */
+	width: 128px;
+    }
+
+    #roulette .roulette-item {
+        display: block; /* Каждый элемент занимает всю ширину */
+        width: 100%; /* Ширина элемента на всю ширину контейнера */
+        height: 128px; /* Фиксированн ая высота для каждого элемента */
+    }
+
+    #roulette .roulette-item img {
+	width: auto;
+        height: 100%; /* Высота изображения на всю высоту элемента */
+        display: block; /* Убираем пробелы под изображением */
+    }
+
+    #roulette::after {
+    position: absolute;
+    left: 50%; /* Центрируем по горизонтали */
+    top: 50%; /* Центрируем по вертикали */
+    transform: translate(-50%, -50%); /* Сдвигаем на половину ширины и высоты для точного центрирования */
+    width: 128px; /* Ширина псевдоэлемента */
+    height: 128px; /* Высота псевдоэлемента */
+    border: 3px solid #000;
+    content: ' '; /* Псевдоэлемент должен иметь контент */
+}
+}
