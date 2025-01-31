@@ -1,9 +1,9 @@
 const items = [
-    "http://demo.st-marron.info/roulette/sample/star.png",
-    "http://demo.st-marron.info/roulette/sample/flower.png",
-    "http://demo.st-marron.info/roulette/sample/coin.png",
-    "http://demo.st-marron.info/roulette/sample/mshroom.png",
-    "http://demo.st-marron.info/roulette/sample/chomp.png",
+    "star.png",
+    "flower.png",
+    "coin.png",
+    "mshroom.png",
+    "chomp.png",
 ];
 
 const probabilities = [
