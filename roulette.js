@@ -33,17 +33,22 @@ class Roulette {
         this.isMobile = window.innerWidth < 600;
         this.direction = this.isMobile ? "vertical" : "horizontal";
          this.resultElement = document.getElementById("roulette-result");
+         this.modal = document.getElementById('modal');
+         this.modalText = document.getElementById('modal-text');
+         this.closeBtn = document.querySelector('.close');
+        this.modalImage = document.getElementById('modal-image'); // Получаем ссылку на элемент img
     }
 
-    init(images) {
+  init(images) {
         if (!Array.isArray(images)) {
             console.log("You need to pass images as an array!");
         }
 
-        images.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
+    images.forEach(src => {
+         const img = new Image();
+         img.src = src;
+       });
+
 
         for (let i = 0; i < 6; i++) {
             const item = this.items[i];
@@ -58,6 +63,7 @@ class Roulette {
 
         }
     }
+
 
     getRandomItem() {
         let rand = Math.random();
@@ -81,10 +87,8 @@ class Roulette {
             this.items[i].value = 0;
         }
 
-         // Скрываем предыдущее сообщение
-        this.resultElement.style.display = "block";
-	this.resultElement.style.color = "white";
-
+         // Скрываем предыдущее сообщение и убираем все стили
+     this.modal.style.display = "none";
         window.requestAnimationFrame(() => this.update());
     }
 
@@ -94,7 +98,7 @@ class Roulette {
         if (this.progress > 1) {
             this.progress = 1;
             this.render();
-            this.showResult(); // Показываем результат
+            this.showModal(); // Показываем модальное окно
             return;
         }
 
@@ -137,13 +141,15 @@ class Roulette {
     }
 
 
-    showResult() {
-      const itemName = items[this.lastItem].split('/').pop().split('.')[0]; // получаем имя картинки
-         this.resultElement.textContent = `Вы выиграли: ${itemName}!`;
-        this.resultElement.style.display = "block"; // Показываем сообщение
-	this.resultElement.style.color = "black";
-
+    showModal() {
+        const itemName = items[this.lastItem].split('/').pop().split('.')[0]; // получаем имя картинки
+        this.modalText.textContent = `Вы выиграли: ${itemName}!`;
+          this.modalImage.src = items[this.lastItem]; // устанавливаем src картинки в модальном окне.
+        this.modal.style.display = "flex";
     }
+   hideModal () {
+         this.modal.style.display = "none";
+   }
 
     interpolator(val) {
         return Math.pow(Math.sin(val * Math.PI / 2), 2.6);
@@ -161,3 +167,6 @@ roulette.init(items);
 
 const btnStart = document.getElementById("roulette-start");
 btnStart.onclick = () => roulette.start();
+
+// добавляем обработчик события на кнопку закрытия модального окна
+roulette.closeBtn.onclick = () => roulette.hideModal();
